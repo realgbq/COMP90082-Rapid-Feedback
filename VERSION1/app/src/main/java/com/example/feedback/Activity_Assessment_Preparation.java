@@ -59,6 +59,7 @@ public class Activity_Assessment_Preparation extends AppCompatActivity implement
     private Button button_assessor;
     private Button button_project_add;
     private Button button_sync_projectlist;
+    private TextView textView_projectlist_label;
     private TextView textView_projectName;
     private TextView textView_aboutDetail;
     private TextView textView_criteriaDetail;
@@ -89,6 +90,8 @@ public class Activity_Assessment_Preparation extends AppCompatActivity implement
 
     private void init() {
         bindHandler();
+        textView_projectlist_label = (TextView)findViewById(R.id.project_list_label);
+        textView_projectlist_label.setText("Project List");
         textView_projectName = findViewById(R.id.project_name_inpreparation);
         textView_aboutDetail = findViewById(R.id.about_detail_inpreparation);
         textView_criteriaDetail = findViewById(R.id.criteria_detail__inpreparation);
