@@ -6,7 +6,7 @@
         android:angle="225"
 
         android:startColor="#DD000000"
-        android:endColor="#FF06407E"/>
+        android:endColor="@color/uniDarkBlue"/>
     <corners
         android:bottomLeftRadius="16dp"
         android:bottomRightRadius="16dp"

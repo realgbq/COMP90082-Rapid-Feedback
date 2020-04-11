@@ -15,13 +15,13 @@
             android:id="@+id/toolbar_reaper_mark"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
+            android:background="@color/white"
             android:elevation="4dp"
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            toolbar:titleTextColor="@color/white"
+            toolbar:titleTextColor="@color/black"
             app:titleTextAppearance="@style/ActionBarTitle">
         </android.support.v7.widget.Toolbar>
 
