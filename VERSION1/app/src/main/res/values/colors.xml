@@ -39,4 +39,10 @@
     <color name="check">#dbdbdb</color>
     <color name="ivory">#FFFFF0</color>
 
+<!--    add for new version-->
+    <color name="uniGray">#EBEBEB</color>
+<!--    <color name="textGray">#7F7F7F</color>-->
+    <color name="uniDarkBlue">#173F77</color>
+    <color name="uniLightBlue">#498BE0</color>
+
 </resources>

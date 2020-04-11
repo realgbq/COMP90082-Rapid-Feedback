@@ -16,11 +16,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,6 +32,7 @@ import com.example.feedback.Activity_Login;
 import com.example.feedback.R;
 import com.google.gson.Gson;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 import main.AllFunctions;
@@ -390,20 +387,28 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
                 }
             }
 
+            int total = weightList.get(0) + weightList.get(1) + weightList.get(2);
             LinearLayout.LayoutParams param1 = new LinearLayout.LayoutParams(
                     0, LinearLayout.LayoutParams.MATCH_PARENT, weightList.get(0));
 
             tv_red.setLayoutParams(param1);
+            tv_red.setGravity(Gravity.CENTER);
+            System.out.println(weightList.get(0));
+            tv_red.setText(getPercent(weightList.get(0),total));
 
             LinearLayout.LayoutParams param2 = new LinearLayout.LayoutParams(
                     0, LinearLayout.LayoutParams.MATCH_PARENT, weightList.get(1));
 
             tv_yellow.setLayoutParams(param2);
+            tv_yellow.setGravity(Gravity.CENTER);
+            tv_yellow.setText(getPercent(weightList.get(1),total));
 
             LinearLayout.LayoutParams param3 = new LinearLayout.LayoutParams(
                     0, LinearLayout.LayoutParams.MATCH_PARENT, weightList.get(2));
 
             tv_green.setLayoutParams(param3);
+            tv_green.setGravity(Gravity.CENTER);
+            tv_green.setText(getPercent(weightList.get(2),total));
 
             Button btn_assessment_comment = convertView.findViewById(R.id.btn_assessment_comment_back);
             btn_assessment_comment.setOnClickListener(new View.OnClickListener() {
@@ -494,6 +499,20 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
             return convertView;
         }
 
+    }
+
+    public String getPercent(Integer num,Integer totalPeople ){
+        String percent ;
+        Double p3 = 0.0;
+        if(totalPeople == 0){
+            p3 = 0.0;
+        }else{
+            p3 = num*1.0/totalPeople;
+        }
+        NumberFormat nf = NumberFormat.getPercentInstance();
+        nf.setMinimumFractionDigits(2);//控制保留小数点后几位，2：表示保留2位小数点
+        percent = nf.format(p3);
+        return percent;
     }
 
     public double totalMark() {
