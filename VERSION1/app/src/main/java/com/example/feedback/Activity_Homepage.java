@@ -36,7 +36,7 @@ public class Activity_Homepage extends AppCompatActivity {
         setContentView(R.layout.activity_homepage);
         initToolbar();
         init();
-        gifImageView = findViewById(R.id.geogif);
+        //gifImageView = findViewById(R.id.geogif);
     }
 
     public void init() {
@@ -54,6 +54,9 @@ public class Activity_Homepage extends AppCompatActivity {
                             startActivity(intent);
                         } else if (to.equals("part3")) {
                             Intent intent = new Intent(Activity_Homepage.this, Activity_Review_Report.class);
+                            startActivity(intent);
+                        }else if (to.equals("part0")) {
+                            Intent intent = new Intent(Activity_Homepage.this, Activity_Login.class);
                             startActivity(intent);
                         }
                         break;
@@ -76,9 +79,9 @@ public class Activity_Homepage extends AppCompatActivity {
 
     public void initToolbar() {
         mToolbar = findViewById(R.id.toolbar_homepage);
-        mToolbar.setTitle("Rapid Feedback -- Welcome, " + AllFunctions.getObject().getUsername() + " [ID: " + AllFunctions.getObject().getId() + "]");
+        mToolbar.setTitle("Home");
         setSupportActionBar(mToolbar);
-        mToolbar.setNavigationIcon(R.drawable.ic_back);
+        //mToolbar.setNavigationIcon(R.drawable.ic_back);
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(Activity_Homepage.this, Activity_Login.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -109,6 +112,10 @@ public class Activity_Homepage extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_toolbar, menu);
         return true;
+    }
+    public void toPart0(View view) {
+        to = "part0";
+        AllFunctions.getObject().syncProjectList();
     }
 
     public void toPart1(View view) {
