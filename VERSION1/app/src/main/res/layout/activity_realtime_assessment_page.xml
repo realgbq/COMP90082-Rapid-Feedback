@@ -15,13 +15,13 @@
             android:id="@+id/toolbar_realtime_assessment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
+            android:background="@color/white"
             android:elevation="4dp"
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            toolbar:titleTextColor="@color/white"
+            toolbar:titleTextColor="@color/black"
             app:titleTextAppearance="@style/ActionBarTitle">
         </android.support.v7.widget.Toolbar>
 
@@ -54,7 +54,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:layout_weight="3">
+                android:layout_weight="3"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp">
+
+                <View
+                        android:id="@+id/divider19_reviewReport"
+                        android:layout_height="1dp"
+                        android:background="@color/black"
+                        android:layout_width="match_parent" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -106,6 +114,11 @@
                     android:layout_weight="12"
                     android:orientation="horizontal"
                     android:background="@color/translusentPrimary">
+
+                    <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/black"/>
 
                     <TextView
                         android:id="@+id/textView9"
@@ -197,7 +210,18 @@
                         android:layout_marginBottom="8dp"
                         android:background="@drawable/ripple_round_button"/>
 
+                    <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/black"/>
+
                 </LinearLayout>
+
+                <View
+                        android:id="@+id/divider20"
+                        android:layout_height="1dp"
+                        android:background="@color/black"
+                        android:layout_width="match_parent" />
 
                 <ListView
                     android:id="@+id/listView_students_realtimeAssessment"
