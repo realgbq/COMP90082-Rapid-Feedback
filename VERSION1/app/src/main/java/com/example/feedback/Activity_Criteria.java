@@ -516,8 +516,10 @@ public class Activity_Criteria extends AppCompatActivity {
                     path = FileUtils.getPath(this, uri);
                     ArrayList<Criterion> uploadCriteriaList = new ArrayList<>();
                     uploadCriteriaList = AllFunctions.getObject().readCriteriaExcel(project, path);
-                    defaultCriteriaList.addAll(uploadCriteriaList);
-                    myAdapter1.notifyDataSetChanged();
+                    if(uploadCriteriaList != null && uploadCriteriaList.size() > 0) {
+                        defaultCriteriaList.addAll(uploadCriteriaList);
+                        myAdapter1.notifyDataSetChanged();
+                    }
                 }
                 break;
             case 1:
