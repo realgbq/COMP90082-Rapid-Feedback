@@ -324,7 +324,9 @@ public class AllFunctions {
 
     public ArrayList<Criterion> readCriteriaExcel(Project project, String path) {
         ExcelParser excelParser = new ExcelParser();
-        if (path.endsWith(".xls")) {
+        if(path == null){
+            return null;
+        } else if (path.endsWith(".xls")) {
             return excelParser.readXlsCriteria(path);
         } else if (path.endsWith(".xlsx")) {
             return excelParser.readXlsxCriteria(path);
