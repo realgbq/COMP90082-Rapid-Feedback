@@ -2,26 +2,27 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp">
 
     <TextView
         android:id="@+id/textView_markerName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
+        android:padding="10dp"
         android:text="TextView"
-        android:textSize="25sp"
         android:textColor="@color/black"
-        android:padding="10dp" />
+        android:textSize="25sp" />
 
     <Button
         android:id="@+id/button_deleteMarker"
-        android:layout_alignParentEnd="true"
         android:layout_width="30dp"
         android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_marginEnd="40dp"
         android:layout_marginStart="10dp"
-        android:padding="10dp"
-        android:background="@drawable/ic_close"/>
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/ic_close"
+        android:padding="10dp" />
 </RelativeLayout>

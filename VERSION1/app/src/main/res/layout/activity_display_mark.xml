@@ -77,8 +77,12 @@
                     android:id="@+id/listView_markItem_markPage"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:numColumns="3"
-                    android:padding="30dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:numColumns="1"
+                    android:padding="40dp"
                     android:scrollbars="horizontal" />
 
             </RelativeLayout>

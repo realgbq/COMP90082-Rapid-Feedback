@@ -7,7 +7,7 @@
 
 
     <LinearLayout
-        android:layout_width="160dp"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:background="@drawable/ic_mark_background"
         android:orientation="vertical"
@@ -37,9 +37,8 @@
         <ListView
             android:id="@+id/_dynamic"
             android:layout_width="match_parent"
-            android:layout_height="0dip"
+            android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
             android:scrollbars="horizontal">
 
         </ListView>
