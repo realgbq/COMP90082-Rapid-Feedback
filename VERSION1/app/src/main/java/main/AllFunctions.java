@@ -377,6 +377,46 @@ public class AllFunctions {
         }
     }
 
+    /**
+     * help to send edit mark
+     *
+     * @param projectId id of project
+     * @param studentId id of student
+     * @param remark json str of remark obj
+     */
+    public void editMark(int projectId, int studentId, String remark) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                communication.editMark(projectId, studentId, remark);
+            }
+        }).start();
+    }
+
+    /**
+     * help to send edit final mark
+     *
+     * @param projectId id of project
+     * @param studentId id of student
+     * @param result json str of assessment list
+     */
+    public void editFinalMark(int projectId, int studentId, String result) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                communication.editFinalMark(projectId, studentId, result);
+            }
+        }).start();
+    }
+
+    public void sendEditACK(String ack){
+        if (ack.equals("true")) {
+            handlerAllfunction.sendEmptyMessage(132);
+        } else {
+            handlerAllfunction.sendEmptyMessage(133);
+        }
+    }
+
     public void submitRecorder(int projectId, int studentId, String length) {
         communication.submitFile(projectId, studentId, length);
     }

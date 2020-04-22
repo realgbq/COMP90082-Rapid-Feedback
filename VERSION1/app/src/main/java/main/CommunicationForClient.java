@@ -431,4 +431,68 @@ public class CommunicationForClient {
             }
         });
     }
+
+    /**
+     * help to send edit mark
+     *
+     * @param projectId id of project
+     * @param studentId id of student
+     * @param remark json str of remark obj
+     */
+    public void editMark(int projectId, int studentId, String remark) {
+        //construct JSONObject to send
+        JSONObject jsonSend = new JSONObject();
+        jsonSend.put("token", token);
+        jsonSend.put("projectId", projectId);
+        jsonSend.put("studentId", studentId);
+        jsonSend.put("type", 0);
+        jsonSend.put("remark", remark);
+        RequestBody body = RequestBody.create(JSON, jsonSend.toJSONString());
+        Request request = new Request.Builder()
+                .url(host + "/EditResultServlet")
+                .post(body)
+                .build();
+
+        //get the JSONObject from response
+        try (Response response = client.newCall(request).execute()) {
+            String receive = response.body().string();
+            JSONObject jsonReceive = JSONObject.parseObject(receive);
+            String mark_ACK = jsonReceive.get("ACK").toString();
+            functions.sendEditACK(mark_ACK);
+        } catch (Exception e1) {
+            AllFunctions.getObject().exceptionWithServer();
+        }
+    }
+
+    /**
+     * help to send edit final mark
+     *
+     * @param projectId id of project
+     * @param studentId id of student
+     * @param result json str of assessment list
+     */
+    public void editFinalMark(int projectId, int studentId, String result) {
+        //construct JSONObject to send
+        JSONObject jsonSend = new JSONObject();
+        jsonSend.put("token", token);
+        jsonSend.put("projectId", projectId);
+        jsonSend.put("studentId", studentId);
+        jsonSend.put("type", 1);
+        jsonSend.put("assessmentList", result);
+        RequestBody body = RequestBody.create(JSON, jsonSend.toJSONString());
+        Request request = new Request.Builder()
+                .url(host + "/EditResultServlet")
+                .post(body)
+                .build();
+
+        //get the JSONObject from response
+        try (Response response = client.newCall(request).execute()) {
+            String receive = response.body().string();
+            JSONObject jsonReceive = JSONObject.parseObject(receive);
+            String mark_ACK = jsonReceive.get("ACK").toString();
+            functions.sendEditACK(mark_ACK);
+        } catch (Exception e1) {
+            AllFunctions.getObject().exceptionWithServer();
+        }
+    }
 }
