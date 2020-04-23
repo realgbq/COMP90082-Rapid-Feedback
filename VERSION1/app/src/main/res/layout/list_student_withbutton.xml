@@ -104,6 +104,20 @@
             android:layout_marginBottom="8dp"
             android:background="@drawable/ripple_round_button"/>
 
+        <TextView
+            android:id="@+id/textView_assessed_studentsWithButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:gravity="left"
+            android:layout_weight="12"
+            android:padding="5dp"
+            android:text="Assessed"
+            android:textColor="@color/black"
+            android:visibility="gone"
+            android:textSize="18sp"
+            android:layout_gravity="center_vertical"/>
+
     <View
             android:layout_width="1dp"
             android:layout_height="match_parent"

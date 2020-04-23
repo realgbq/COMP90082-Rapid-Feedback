@@ -394,21 +394,18 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
             tv_red.setLayoutParams(param1);
             tv_red.setGravity(Gravity.CENTER);
             System.out.println(weightList.get(0));
-            tv_red.setText(getPercent(weightList.get(0),total));
 
             LinearLayout.LayoutParams param2 = new LinearLayout.LayoutParams(
                     0, LinearLayout.LayoutParams.MATCH_PARENT, weightList.get(1));
 
             tv_yellow.setLayoutParams(param2);
             tv_yellow.setGravity(Gravity.CENTER);
-            tv_yellow.setText(getPercent(weightList.get(1),total));
 
             LinearLayout.LayoutParams param3 = new LinearLayout.LayoutParams(
                     0, LinearLayout.LayoutParams.MATCH_PARENT, weightList.get(2));
 
             tv_green.setLayoutParams(param3);
             tv_green.setGravity(Gravity.CENTER);
-            tv_green.setText(getPercent(weightList.get(2),total));
 
             Button btn_assessment_comment = convertView.findViewById(R.id.btn_assessment_comment_back);
             btn_assessment_comment.setOnClickListener(new View.OnClickListener() {
@@ -632,9 +629,10 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
             convertView = LayoutInflater.from(mContext).inflate(R.layout.list_other_comment, parent, false);
 
             TextView tv_other_comment = convertView.findViewById(R.id.tv_other_comment);
-            tv_other_comment.setText("For " + project.getStudentList().get(studentList.get(position)).getFirstName() + " "
+            tv_other_comment.setText("For Name: " + project.getStudentList().get(studentList.get(position)).getFirstName() + " "
                     + project.getStudentList().get(studentList.get(position)).getMiddleName() + " "
-                    + project.getStudentList().get(studentList.get(position)).getLastName());
+                    + project.getStudentList().get(studentList.get(position)).getLastName()+ "   Student Number: "
+                    + project.getStudentList().get(studentList.get(position)).getStudentNumber());
             Button btn_assessment_save = convertView.findViewById(R.id.btn_assessment_save);
             et_other_comment = convertView.findViewById(R.id.et_other_comment);
 

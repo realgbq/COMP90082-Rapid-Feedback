@@ -199,8 +199,9 @@ public class Activity_Realtime_Assessment extends AppCompatActivity {
             ArrayList<Remark> remarkList = studentList.get(position).getRemarkList();
             for (int i = 0; i < remarkList.size(); i++) {
                 if (remarkList.get(i).getId() == AllFunctions.getObject().getId()) {
-                    button_start.setVisibility(View.INVISIBLE);
+                    button_start.setVisibility(View.GONE);
                     button_start.setEnabled(false);
+                    convertView.findViewById(R.id.textView_assessed_studentsWithButton).setVisibility(View.VISIBLE);
                     convertView.setEnabled(false);
                     listView_students.setItemChecked(position, false);
                 }
