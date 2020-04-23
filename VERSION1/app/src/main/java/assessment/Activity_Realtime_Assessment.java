@@ -201,7 +201,7 @@ public class Activity_Realtime_Assessment extends AppCompatActivity {
                 if (remarkList.get(i).getId() == AllFunctions.getObject().getId()) {
                     button_start.setVisibility(View.GONE);
                     button_start.setEnabled(false);
-                    convertView.findViewById(R.id.textView_assessed_studentsWithButton).setVisibility(View.VISIBLE);
+                    convertView.findViewById(R.id.textView_marked_studentsWithButton).setVisibility(View.VISIBLE);
                     convertView.setEnabled(false);
                     listView_students.setItemChecked(position, false);
                 }
@@ -251,3 +251,4 @@ public class Activity_Realtime_Assessment extends AppCompatActivity {
     }
 
 }
+
