@@ -83,6 +83,7 @@
                     android:layout_marginBottom="20dp"
                     android:numColumns="1"
                     android:padding="40dp"
+                    android:verticalSpacing="10dp"
                     android:scrollbars="horizontal" />
 
             </RelativeLayout>

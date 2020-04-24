@@ -127,7 +127,7 @@ public class Activity_Editable_Individual_Report extends AppCompatActivity {
             }
         });
         if (AllFunctions.getObject().getProjectList().get(indexOfProject).getPrincipalId() != AllFunctions.getObject().getId()) {
-            button_finalReport.setVisibility(View.INVISIBLE);
+            button_finalReport.setVisibility(View.VISIBLE);
         }
 
         for (int i = 0; i < remarkList.size(); i++) {
@@ -143,7 +143,18 @@ public class Activity_Editable_Individual_Report extends AppCompatActivity {
         }
 
         Button button_editReport_individual = findViewById(R.id.button_edit_report);
-        button_editReport_individual.setVisibility(View.INVISIBLE);
+        button_editReport_individual.setVisibility(View.VISIBLE);
+        button_editReport_individual.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Activity_Editable_Individual_Report.this, Activity_Assessment.class);
+                intent.putExtra("indexOfProject", String.valueOf(indexOfProject));
+                intent.putExtra("indexOfStudent", String.valueOf(indexOfStudent));
+                intent.putExtra("indexOfGroup", String.valueOf(indexOfGroup));
+                intent.putExtra("from", FROMREVIEWEDIT);
+                startActivity(intent);
+            }
+        });
 
         TextView textView_totalMark = findViewById(R.id.textView_totalMark_report);
         textView_totalMark.setText("Mark: " + String.format("%.2f", getTotalMark(remark)) + "%");
