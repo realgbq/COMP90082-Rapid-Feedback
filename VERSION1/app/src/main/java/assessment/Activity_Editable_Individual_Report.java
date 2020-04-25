@@ -44,6 +44,7 @@ public class Activity_Editable_Individual_Report extends AppCompatActivity {
     private Toolbar mToolbar;
     public static final String FROMREALTIMEEDIT = "realtime_edit";
     public static final String FROMREVIEWEDIT = "review_edit";
+    public static final String FROMREALTIME = "realtime";
     private Remark remark;
     private Project project;
 
@@ -151,7 +152,7 @@ public class Activity_Editable_Individual_Report extends AppCompatActivity {
                 intent.putExtra("indexOfProject", String.valueOf(indexOfProject));
                 intent.putExtra("indexOfStudent", String.valueOf(indexOfStudent));
                 intent.putExtra("indexOfGroup", String.valueOf(indexOfGroup));
-                intent.putExtra("from", FROMREVIEWEDIT);
+                intent.putExtra("from", FROMREALTIME);
                 startActivity(intent);
             }
         });
