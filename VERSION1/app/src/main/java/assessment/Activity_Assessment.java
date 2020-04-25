@@ -152,7 +152,7 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
 
             double totalWeight = 0;
             for (int j = 0; j < project.getCriterionList().size(); j++) {
-                totalWeight = totalWeighting + project.getCriterionList().get(j).getMaximumMark();
+                totalWeight = totalWeight + project.getCriterionList().get(j).getMaximumMark();
             }
             totalWeighting = Double.valueOf(totalWeight).intValue();
 
@@ -525,7 +525,12 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
                 }
             }
             for (int m = 0; m < newRemark.getAssessmentList().size(); m++) {
-                sum = sum + newRemark.getAssessmentList().get(m).getScore();
+                // avoid initial problem
+                double score = newRemark.getAssessmentList().get(m).getScore();
+                if("-1.0".equals(String.valueOf(score))){
+                    score = 0d;
+                }
+                sum = sum + score;
             }
             totalMark = sum * (100.0 / totalWeighting);
         }
