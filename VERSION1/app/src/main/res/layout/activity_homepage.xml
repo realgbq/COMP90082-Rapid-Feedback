@@ -196,6 +196,15 @@
                 android:textSize="28sp"
                 android:textStyle="bold" />
 
+            <Button
+                android:id="@+id/button_help_reference"
+                android:layout_below="@+id/button_Part3_homepage"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_help" />
+
         </RelativeLayout>
     </ScrollView>
 
