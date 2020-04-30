@@ -45,6 +45,10 @@
 
         <activity android:name=".Activity_Mark_Allocation"
                   android:screenOrientation="landscape"/>
+
+        <activity android:name=".Activity_Help"
+            android:screenOrientation="landscape"/>
+
         <activity
             android:name=".Activity_Criteria"
             android:launchMode="singleTask"
