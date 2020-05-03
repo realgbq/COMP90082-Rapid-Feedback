@@ -25,6 +25,7 @@ public class ProjectStudent {
     private RecordingItem item;
     private int ifEmailed;      // if the result has been emailed to the student
     private ArrayList<Remark> remarkList = new ArrayList<Remark>();
+    private ArrayList<FinalRemark> finalRemarkList = new ArrayList<>();
 
     public ProjectStudent() {
 
@@ -150,4 +151,11 @@ public class ProjectStudent {
         return item;
     }
 
+    public ArrayList<FinalRemark> getFinalRemarkList() {
+        return finalRemarkList;
+    }
+
+    public void setFinalRemarkList(ArrayList<FinalRemark> finalRemarkList) {
+        this.finalRemarkList = finalRemarkList;
+    }
 }

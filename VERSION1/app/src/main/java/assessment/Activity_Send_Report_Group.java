@@ -13,7 +13,6 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,7 +20,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.alibaba.fastjson.JSON;
 import com.example.feedback.Activity_Login;
 import com.example.feedback.Activity_Record_Voice;
 import com.example.feedback.R;
@@ -30,12 +28,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import main.AllFunctions;
-import newdbclass.Assessment;
-import newdbclass.ExpandedComment;
-import newdbclass.Project;
-import newdbclass.ProjectStudent;
-import newdbclass.Remark;
-import newdbclass.SelectedComment;
+import newdbclass.*;
 
 public class Activity_Send_Report_Group extends AppCompatActivity {
     private int indexOfProject;
@@ -51,6 +44,8 @@ public class Activity_Send_Report_Group extends AppCompatActivity {
     private ProjectStudent student;
     private Remark remark;
     private ArrayList<Remark> remarkList;
+    private static final String FROM_GROUP = "FROM_GROUP";
+    private ArrayList<FinalRemark> finalRemarkList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,6 +122,7 @@ public class Activity_Send_Report_Group extends AppCompatActivity {
         AllFunctions.getObject().setHandler(handler);
 
         student = AllFunctions.getObject().getProjectList().get(indexOfProject).getStudentList().get(indexOfStudent);
+        finalRemarkList = student.getFinalRemarkList();
         remarkList = student.getRemarkList();
 
         for (int i = 0; i < remarkList.size(); i++) {
@@ -225,9 +221,29 @@ public class Activity_Send_Report_Group extends AppCompatActivity {
                 }
             }
         });
+        Button button_edit = findViewById(R.id.button_final_edit);
+        button_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Activity_Send_Report_Group.this, Activity_Final_Edit.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("indexOfProject", String.valueOf(indexOfProject));
+                intent.putExtra("indexOfGroup", String.valueOf(indexOfGroup));
+                intent.putExtra("indexOfStudent", String.valueOf(indexOfStudent));
+                intent.putExtra("from", FROM_GROUP);
+                startActivity(intent);
+                finish();
+            }
+        });
+
 
         TextView textView_totalMark = findViewById(R.id.textView_totalMark_sendReportGroup);
-        textView_totalMark.setText("Mark:" + (int) getAverageMark(remarkList) + "%");
+        int finalMark = 0;
+        if(finalRemarkList == null || finalRemarkList.size() <= 0) {
+            finalMark = (int) getAverageMark(remarkList);
+        } else {
+            finalMark = (int) totalMark();
+        }
+        textView_totalMark.setText("Mark:" + finalMark + "%");
 
         String htmlString =
                 "<html>" +
@@ -239,7 +255,7 @@ public class Activity_Send_Report_Group extends AppCompatActivity {
                         "<h2 style=\"font-weight: normal\">Project</h2>" +
                         "<p>" + project.getName() + "</p >" +
                         "<h2 style=\"font-weight: normal\">Mark Attained</h2>" +
-                        "<p>" + getAverageMark(remarkList) + "%</p >";
+                        "<p>" + finalMark + "%</p >";
 
         htmlString += "<h2 style=\"font-weight: normal\">Students</h2>" + "<p>";
         for (int i = 0; i < studentInfoArrayList.size(); i++)
@@ -252,8 +268,16 @@ public class Activity_Send_Report_Group extends AppCompatActivity {
 
         htmlString += "<h2 style=\"font-weight: normal\">Grading Criteria</h2>" + "<p>";
         for (int i = 0; i < remark.getAssessmentList().size(); i++) {
+            double mark = getAverageCriterionMark(remarkList, remark.getAssessmentList().get(i).getCriterionId());
+            if(finalRemarkList != null && finalRemarkList.size() > 0){
+                for(FinalRemark finalRemark : finalRemarkList){
+                    if(remark.getAssessmentList().get(i).getCriterionId() == finalRemark.getCriterionId()){
+                        mark = finalRemark.getFinalScore();
+                    }
+                }
+            }
             htmlString += "<h3 style=\"font-weight: normal\"><span style=\"float:left\">" + getCriterionName(remark.getAssessmentList().get(i)) + "</span>" +
-                    "<span style=\"float:right\">" + "  ---  " + getAverageCriterionMark(remarkList, remark.getAssessmentList().get(i).getCriterionId()) + "/" + getCriterionMaxMark(remark.getAssessmentList().get(i)) + "</span></h3>";
+                    "<span style=\"float:right\">" + "  ---  " + mark + "/" + getCriterionMaxMark(remark.getAssessmentList().get(i)) + "</span></h3>";
             for (int j = 0; j < remarkList.size(); j++) {
                 htmlString += "<h4 style=\"font-weight: normal;color: #014085\">" + "Marker " + (j + 1) + ":</h4>";
                 if (remarkList.get(j).getAssessmentList().size() > 0) {
@@ -326,6 +350,20 @@ public class Activity_Send_Report_Group extends AppCompatActivity {
         BigDecimal bigDecimal = new BigDecimal(avgMark);
         avgMark = bigDecimal.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
         return avgMark;
+    }
+
+    private double totalMark(){
+        double sum = 0d;
+        double total = 0d;
+        for(Criterion criterion : project.getCriterionList()){
+            sum += criterion.getMaximumMark();
+            for(FinalRemark finalRemark : finalRemarkList){
+                if(finalRemark.getCriterionId() == criterion.getId()){
+                    total += finalRemark.getFinalScore();
+                }
+            }
+        }
+        return total * (100.0 / sum);
     }
 
     public double getAverageMark(ArrayList<Remark> remarkList) {
