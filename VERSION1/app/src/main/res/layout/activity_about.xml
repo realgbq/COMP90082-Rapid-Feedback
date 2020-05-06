@@ -76,49 +76,49 @@
                             android:background="@color/colorPrimary" />
 
                         <TextView
-                            android:id="@+id/textView13"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/divider9"
-                            android:layout_marginLeft="30dp"
-                            android:layout_marginTop="20dp"
-                            android:text="Project Name"
-                            android:textColor="@color/black"
-                            android:textSize="25sp" />
+                                android:id="@+id/textView13"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/divider9"
+                                android:layout_marginLeft="30dp"
+                                android:layout_marginTop="20dp"
+                                android:text="Project Name"
+                                android:textColor="@color/black"
+                                android:textSize="25sp" android:textStyle="bold"/>
 
                         <TextView
-                            android:id="@+id/textView15"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/editText_projectname_inabout"
-                            android:layout_marginLeft="30dp"
-                            android:layout_marginTop="20dp"
-                            android:text="Subject Name"
-                            android:textColor="@color/black"
-                            android:textSize="25sp" />
+                                android:id="@+id/textView15"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/editText_projectname_inabout"
+                                android:layout_marginLeft="30dp"
+                                android:layout_marginTop="20dp"
+                                android:text="Subject Name"
+                                android:textColor="@color/black"
+                                android:textSize="25sp" android:textStyle="bold"/>
 
                         <TextView
-                            android:id="@+id/textView16"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/editText_subjectname_inabout"
-                            android:layout_marginTop="20dp"
-                            android:text="Subject Code"
-                            android:layout_marginLeft="30dp"
-                            android:textColor="@color/black"
-                            android:textSize="25sp" />
+                                android:id="@+id/textView16"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/editText_subjectname_inabout"
+                                android:layout_marginTop="20dp"
+                                android:text="Subject Code"
+                                android:layout_marginLeft="30dp"
+                                android:textColor="@color/black"
+                                android:textSize="25sp" android:textStyle="bold"/>
 
                         <TextView
-                            android:id="@+id/textView17"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/textView_warningMin_Timer"
-                            android:layout_marginTop="30dp"
-                            android:layout_marginLeft="30dp"
-                            android:layout_marginBottom="8dp"
-                            android:text="Project Description (optional)"
-                            android:textColor="@color/black"
-                            android:textSize="25sp" />
+                                android:id="@+id/textView17"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/textView_warningMin_Timer"
+                                android:layout_marginTop="30dp"
+                                android:layout_marginLeft="30dp"
+                                android:layout_marginBottom="8dp"
+                                android:text="Project Description (optional)"
+                                android:textColor="@color/black"
+                                android:textSize="25sp" android:textStyle="bold"/>
 
                         <EditText
                             android:id="@+id/editText_projectname_inabout"
@@ -161,42 +161,43 @@
                             android:inputType="text" />
 
                         <EditText
-                            android:id="@+id/editText_projectdescription_inabout"
-                            android:layout_width="570dp"
-                            android:layout_height="200dp"
-                            android:layout_below="@id/textView17"
-                            android:layout_marginStart="30dp"
-                            android:layout_marginLeft="30dp"
-                            android:layout_marginTop="15dp"
-                            android:background="@drawable/project_description_focus"
-                            android:gravity="start|top"
-                            android:inputType="textMultiLine"
-                            android:paddingTop="3dp"
-                            android:textSize="20dp" />
+                                android:id="@+id/editText_projectdescription_inabout"
+                                android:layout_width="570dp"
+                                android:layout_height="200dp"
+                                android:layout_below="@id/textView17"
+                                android:layout_marginStart="30dp"
+                                android:layout_marginLeft="30dp"
+                                android:layout_marginTop="15dp"
+                                android:background="@drawable/rounded_box"
+                                android:gravity="start|top"
+                                android:inputType="textMultiLine"
+                                android:paddingTop="3dp"
+                                android:textSize="20dp"
+                                android:drawableBottom="@drawable/project_description_focus"/>
 
                         <TextView
-                            android:id="@+id/textView_duration_inTimer"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/editText_subjectcode_inabout"
-                            android:layout_alignParentStart="true"
-                            android:layout_marginLeft="30dp"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginBottom="10dp"
-                            android:text="Duration"
-                            android:textSize="25sp"
-                            android:textColor="@color/black"/>
+                                android:id="@+id/textView_duration_inTimer"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/editText_subjectcode_inabout"
+                                android:layout_alignParentStart="true"
+                                android:layout_marginLeft="30dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginBottom="10dp"
+                                android:text="Duration"
+                                android:textSize="25sp"
+                                android:textColor="@color/black" android:textStyle="bold"/>
 
                         <TextView
-                            android:id="@+id/textView_durationMin_Timer"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="60dp"
-                            android:layout_marginTop="15dp"
-                            android:layout_below="@id/textView_duration_inTimer"
-                            android:text="minutes"
-                            android:textColor="@color/black"
-                            android:textSize="22sp"/>
+                                android:id="@+id/textView_durationMin_Timer"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="60dp"
+                                android:layout_marginTop="15dp"
+                                android:layout_below="@id/textView_duration_inTimer"
+                                android:text="Minutes"
+                                android:textColor="@color/black"
+                                android:textSize="22sp"/>
 
                         <Button
                             android:id="@+id/button_addDurationMin_inTimer"
@@ -210,21 +211,20 @@
                             android:onClick="addDurationMin" />
 
                         <EditText
-                            android:id="@+id/editText_durationMin_Timer"
-                            android:layout_width="50dp"
-                            android:layout_height="36dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="15dp"
-                            android:layout_below="@id/textView_duration_inTimer"
-                            android:layout_toRightOf="@+id/button_addDurationMin_inTimer"
-                            android:ems="10"
-                            android:padding="6dp"
-                            android:textColor="@color/black"
-                            android:textSize="20dp"
-                            android:text="0"
-                            android:gravity="center"
-                            android:background="@drawable/project_description_focus"
-                            android:inputType="number" />
+                                android:id="@+id/editText_durationMin_Timer"
+                                android:layout_width="50dp"
+                                android:layout_height="36dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="15dp"
+                                android:layout_below="@id/textView_duration_inTimer"
+                                android:layout_toRightOf="@+id/button_addDurationMin_inTimer"
+                                android:ems="10"
+                                android:padding="6dp"
+                                android:textColor="@color/black"
+                                android:textSize="20dp"
+                                android:gravity="center"
+                                android:inputType="number" android:text="0"
+                                android:background="@drawable/rounded_box"/>
 
                         <Button
                             android:id="@+id/button_durationMinMinus_Timer"
@@ -238,16 +238,16 @@
                             android:onClick="minusDurationMin" />
 
                         <TextView
-                            android:id="@+id/textView_durationSec_Timer"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="30dp"
-                            android:layout_marginTop="15dp"
-                            android:layout_below="@id/textView_duration_inTimer"
-                            android:layout_toRightOf="@+id/button_durationMinMinus_Timer"
-                            android:text="seconds"
-                            android:textSize="22sp"
-                            android:textColor="@color/black"/>
+                                android:id="@+id/textView_durationSec_Timer"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="30dp"
+                                android:layout_marginTop="15dp"
+                                android:layout_below="@id/textView_duration_inTimer"
+                                android:layout_toRightOf="@+id/button_durationMinMinus_Timer"
+                                android:text="Seconds"
+                                android:textSize="22sp"
+                                android:textColor="@color/black"/>
 
                         <Button
                             android:id="@+id/button_addDurationSec_inTimer"
@@ -261,21 +261,21 @@
                             android:onClick="addDurationSec" />
 
                         <EditText
-                            android:id="@+id/editText_durationSec_Timer"
-                            android:layout_width="50dp"
-                            android:layout_height="36dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="15dp"
-                            android:layout_below="@id/textView_duration_inTimer"
-                            android:layout_toRightOf="@+id/button_addDurationSec_inTimer"
-                            android:ems="10"
-                            android:padding="6dp"
-                            android:textColor="@color/black"
-                            android:textSize="20dp"
-                            android:text="0"
-                            android:gravity="center"
-                            android:background="@drawable/project_description_focus"
-                            android:inputType="number" />
+                                android:id="@+id/editText_durationSec_Timer"
+                                android:layout_width="50dp"
+                                android:layout_height="36dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="15dp"
+                                android:layout_below="@id/textView_duration_inTimer"
+                                android:layout_toRightOf="@+id/button_addDurationSec_inTimer"
+                                android:ems="10"
+                                android:padding="6dp"
+                                android:textColor="@color/black"
+                                android:textSize="20dp"
+                                android:text="0"
+                                android:gravity="center"
+                                android:background="@drawable/rounded_box"
+                                android:inputType="number"/>
 
                         <Button
                             android:id="@+id/button_durationSecMinus_Timer"
@@ -289,29 +289,29 @@
                             android:onClick="minusDurationSec"/>
 
                         <TextView
-                            android:id="@+id/textView_warning_inTimer2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/textView_durationMin_Timer"
-                            android:layout_alignParentStart="true"
-                            android:layout_marginLeft="30dp"
-                            android:layout_marginTop="30dp"
-                            android:layout_marginBottom="10dp"
-                            android:fontFamily="sans-serif"
-                            android:text="Warning"
-                            android:textColor="@color/black"
-                            android:textSize="25sp" />
+                                android:id="@+id/textView_warning_inTimer2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/textView_durationMin_Timer"
+                                android:layout_alignParentStart="true"
+                                android:layout_marginLeft="30dp"
+                                android:layout_marginTop="30dp"
+                                android:layout_marginBottom="10dp"
+                                android:fontFamily="sans-serif"
+                                android:text="Warning"
+                                android:textColor="@color/black"
+                                android:textSize="25sp" android:textStyle="bold"/>
 
                         <TextView
-                            android:id="@+id/textView_warningMin_Timer"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/textView_warning_inTimer2"
-                            android:layout_marginLeft="60dp"
-                            android:layout_marginTop="15dp"
-                            android:text="minutes"
-                            android:textSize="22sp"
-                            android:textColor="@color/black"/>
+                                android:id="@+id/textView_warningMin_Timer"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/textView_warning_inTimer2"
+                                android:layout_marginLeft="60dp"
+                                android:layout_marginTop="15dp"
+                                android:text="Minutes"
+                                android:textSize="22sp"
+                                android:textColor="@color/black"/>
 
                         <Button
                             android:id="@+id/button_addWarningMin_inTimer"
@@ -325,21 +325,21 @@
                             android:onClick="addWarningMin" />
 
                         <EditText
-                            android:id="@+id/editText_warningMin_Timer"
-                            android:layout_width="50dp"
-                            android:layout_height="36dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="15dp"
-                            android:layout_below="@+id/textView_warning_inTimer2"
-                            android:layout_toRightOf="@+id/button_addWarningMin_inTimer"
-                            android:ems="10"
-                            android:padding="6dp"
-                            android:textColor="@color/black"
-                            android:textSize="20dp"
-                            android:text="0"
-                            android:gravity="center"
-                            android:background="@drawable/project_description_focus"
-                            android:inputType="number" />
+                                android:id="@+id/editText_warningMin_Timer"
+                                android:layout_width="50dp"
+                                android:layout_height="36dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="15dp"
+                                android:layout_below="@+id/textView_warning_inTimer2"
+                                android:layout_toRightOf="@+id/button_addWarningMin_inTimer"
+                                android:ems="10"
+                                android:padding="6dp"
+                                android:textColor="@color/black"
+                                android:textSize="20dp"
+                                android:text="0"
+                                android:gravity="center"
+                                android:background="@drawable/rounded_box"
+                                android:inputType="number"/>
 
                         <Button
                             android:id="@+id/button_warningMinMinus_Timer"
@@ -353,16 +353,16 @@
                             android:onClick="minusWarningMin" />
 
                         <TextView
-                            android:id="@+id/textView_warningSec_Timer"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/textView_warning_inTimer2"
-                            android:layout_marginLeft="30dp"
-                            android:layout_marginTop="15dp"
-                            android:layout_toRightOf="@id/button_warningMinMinus_Timer"
-                            android:text="seconds"
-                            android:textColor="@color/black"
-                            android:textSize="22sp" />
+                                android:id="@+id/textView_warningSec_Timer"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/textView_warning_inTimer2"
+                                android:layout_marginLeft="30dp"
+                                android:layout_marginTop="15dp"
+                                android:layout_toRightOf="@id/button_warningMinMinus_Timer"
+                                android:text="Seconds"
+                                android:textColor="@color/black"
+                                android:textSize="22sp"/>
 
                         <Button
                             android:id="@+id/button_addWarningSec_inTimer"
@@ -376,21 +376,21 @@
                             android:onClick="addWarningSec"/>
 
                         <EditText
-                            android:id="@+id/editText_warningSec_Timer"
-                            android:layout_width="50dp"
-                            android:layout_height="36dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="15dp"
-                            android:layout_below="@+id/textView_warning_inTimer2"
-                            android:layout_toRightOf="@+id/button_addWarningSec_inTimer"
-                            android:ems="10"
-                            android:padding="6dp"
-                            android:textColor="@color/black"
-                            android:textSize="20dp"
-                            android:text="0"
-                            android:gravity="center"
-                            android:background="@drawable/project_description_focus"
-                            android:inputType="number" />
+                                android:id="@+id/editText_warningSec_Timer"
+                                android:layout_width="50dp"
+                                android:layout_height="36dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="15dp"
+                                android:layout_below="@+id/textView_warning_inTimer2"
+                                android:layout_toRightOf="@+id/button_addWarningSec_inTimer"
+                                android:ems="10"
+                                android:padding="6dp"
+                                android:textColor="@color/black"
+                                android:textSize="20dp"
+                                android:text="0"
+                                android:gravity="center"
+                                android:background="@drawable/rounded_box"
+                                android:inputType="number"/>
 
                         <Button
                             android:id="@+id/button_warningSecMinus_Timer"
