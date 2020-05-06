@@ -478,7 +478,7 @@ public class CommunicationForClient {
         jsonSend.put("projectId", projectId);
         jsonSend.put("studentId", studentId);
         jsonSend.put("type", 1);
-        jsonSend.put("assessmentList", result);
+        jsonSend.put("finalRemarkList", result);
         RequestBody body = RequestBody.create(JSON, jsonSend.toJSONString());
         Request request = new Request.Builder()
                 .url(host + "/EditResultServlet")

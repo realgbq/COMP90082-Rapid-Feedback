@@ -69,6 +69,20 @@
                     android:background="@drawable/ripple_round_button"/>
 
                 <Button
+                        android:id="@+id/button_final_edit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_margin="10dp"
+                        android:text="Edit"
+                        android:gravity="center"
+                        android:textSize="20sp"
+                        android:paddingRight="16dp"
+                        android:paddingLeft="16dp"
+                        android:layout_gravity="center"
+                        android:textColor="@color/white"
+                        android:background="@drawable/ripple_round_button"/>
+
+                <Button
                     android:id="@+id/button_sendStudent_sendReportIndividual"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
