@@ -196,9 +196,13 @@ public class Activity_Marker_Management extends AppCompatActivity implements Ada
                 dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if (mEditTextInvitee.getText().toString().equals(""))
+                        if (mEditTextInvitee.getText().toString().equals("")) {
                             Toast.makeText(Activity_Marker_Management.this,
                                     "The id of an invitee cannot be empty.", Toast.LENGTH_SHORT).show();
+                        } else if (String.valueOf(project.getPrincipalId()).equals(mEditTextInvitee.getText().toString())){
+                            Toast.makeText(Activity_Marker_Management.this,
+                                    "You could not add yourself.", Toast.LENGTH_SHORT).show();
+                        }
                         else {
                             if (isNumeric(mEditTextInvitee.getText().toString())) {
                                 AllFunctions.getObject().inviteMarker(Integer.parseInt(mEditTextInvitee.getText().toString()), projectId);
