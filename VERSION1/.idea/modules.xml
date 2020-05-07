@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/COMP90082-Rapid-Feedback-VERSION1.iml" filepath="$PROJECT_DIR$/COMP90082-Rapid-Feedback-VERSION1.iml" group="VERSION1" />
+      <module fileurl="file://$PROJECT_DIR$/VERSION1.iml" filepath="$PROJECT_DIR$/VERSION1.iml" group="VERSION1" />
       <module fileurl="file://$PROJECT_DIR$/app/VERSION1-app.iml" filepath="$PROJECT_DIR$/app/VERSION1-app.iml" group="VERSION1/app" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
 </project>
