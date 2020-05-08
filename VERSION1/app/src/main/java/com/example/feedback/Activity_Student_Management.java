@@ -422,7 +422,7 @@ public class Activity_Student_Management extends AppCompatActivity {
                         studentList.add(student);
                         AllFunctions.getObject().addStudent(projectId, studentList, "single");
                     } else {
-                        Toast.makeText(getApplicationContext(), "student with ID:" + studentID + " is already exits.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "student with ID:" + studentID + " is already existing.", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
