@@ -108,19 +108,19 @@
                 android:layout_weight="1">
 
                 <ScrollView
-                    android:layout_width="1024dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/white"
-                    android:layout_centerHorizontal="true">
+                    android:layout_centerHorizontal="true"
+                    android:background="@color/white">
 
                     <TextView
                         android:id="@+id/textView_pdfContent_report"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:padding="40dp"
                         android:text="TextView"
-                        android:textSize="20sp"
                         android:textColor="@color/black"
-                        android:padding="10dp"/>
+                        android:textSize="20sp" />
                 </ScrollView>
             </RelativeLayout>
         </LinearLayout>
