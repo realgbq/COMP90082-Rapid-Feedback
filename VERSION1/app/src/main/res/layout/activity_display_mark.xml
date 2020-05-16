@@ -60,6 +60,22 @@
                     android:text="Refresh"
                     android:textColor="@color/white"
                     android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView_student"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Student:"
+                    android:gravity="left|center_vertical"
+                    android:paddingLeft="40dp"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="10dp"
+                    app:autoSizeMaxTextSize="28dp"
+                    app:autoSizeStepGranularity="2dp"/>
+
             </RelativeLayout>
 
             <RelativeLayout
