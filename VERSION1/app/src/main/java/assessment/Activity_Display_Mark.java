@@ -162,6 +162,9 @@ public class Activity_Display_Mark extends AppCompatActivity {
         project = AllFunctions.getObject().getProjectList().get(indexOfProject);
         student = project.getStudentList().get(indexOfStudent);
 
+        TextView textView_student = findViewById(R.id.textView_student);
+        textView_student.setText("Student: " +  student.getStudentNumber() + "--" + student.getFirstName() + " " + student.getMiddleName() + " " + student.getLastName());
+
         for (int n = 0; n < project.getMarkerList().size(); n++) {
             boolean hasRemark = false;
             for (int m = 0; m < student.getRemarkList().size(); m++) {
