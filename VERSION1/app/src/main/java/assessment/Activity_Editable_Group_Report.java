@@ -164,8 +164,10 @@ public class Activity_Editable_Group_Report extends AppCompatActivity {
                 intent.putExtra("indexOfProject", String.valueOf(indexOfProject));
                 intent.putExtra("indexOfStudent", String.valueOf(indexOfStudent));
                 intent.putExtra("indexOfGroup", String.valueOf(indexOfGroup));
-                intent.putExtra("from", FROMREALTIME);
+                intent.putExtra("indexOfMark", String.valueOf(indexOfMark));
+                intent.putExtra("from", "fromEdit");
                 startActivity(intent);
+                finish();
             }
         });
 

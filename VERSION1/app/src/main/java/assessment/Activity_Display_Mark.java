@@ -132,7 +132,7 @@ public class Activity_Display_Mark extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 } else if (from.equals(Activity_Assessment.FROMREVIEW)
-                        || from.equals(Activity_Send_Report_Individual.FROMREVIEWSEND)) {
+                        || from.equals(Activity_Send_Report_Individual.FROMREVIEWSEND) || from.equals("fromEdit")) {
                     Intent intent = new Intent(Activity_Display_Mark.this, Activity_Review_Report.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     finish();
@@ -268,6 +268,7 @@ public class Activity_Display_Mark extends AppCompatActivity {
                             intent.putExtra("indexOfMark", String.valueOf(position));
                             intent.putExtra("from", FROMREALTIME);
                             startActivity(intent);
+                            finish();
                         } else {
                             Intent intent = new Intent(Activity_Display_Mark.this, Activity_Editable_Group_Report.class);
                             intent.putExtra("indexOfProject", String.valueOf(indexOfProject));
@@ -276,8 +277,9 @@ public class Activity_Display_Mark extends AppCompatActivity {
                             intent.putExtra("indexOfStudent", String.valueOf(indexOfStudent));
                             intent.putExtra("from", FROMREALTIME);
                             startActivity(intent);
+                            finish();
                         }
-                    } else if (from.equals(FROMREVIEW) || from.equals(Activity_Send_Report_Individual.FROMREVIEWSEND)) {
+                    } else if (from.equals(FROMREVIEW) || from.equals("fromEdit") || from.equals(Activity_Send_Report_Individual.FROMREVIEWSEND)) {
                         if (indexOfGroup == 0) {
                             Intent intent = new Intent(Activity_Display_Mark.this, Activity_Editable_Individual_Report.class);
                             intent.putExtra("indexOfProject", String.valueOf(indexOfProject));
@@ -286,6 +288,7 @@ public class Activity_Display_Mark extends AppCompatActivity {
                             intent.putExtra("indexOfMark", String.valueOf(position));
                             intent.putExtra("from", FROMREVIEW);
                             startActivity(intent);
+                            finish();
                         } else {
                             Intent intent = new Intent(Activity_Display_Mark.this, Activity_Editable_Group_Report.class);
                             intent.putExtra("indexOfProject", String.valueOf(indexOfProject));
@@ -294,6 +297,7 @@ public class Activity_Display_Mark extends AppCompatActivity {
                             intent.putExtra("indexOfStudent", String.valueOf(indexOfStudent));
                             intent.putExtra("from", FROMREVIEW);
                             startActivity(intent);
+                            finish();
                         }
                     }
                 }
