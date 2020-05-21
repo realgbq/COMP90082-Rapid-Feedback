@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/ic_mark_background"
+      android:orientation="vertical"
+      android:gravity="center"
     android:layout_marginTop="40dp">
 
     <TextView
@@ -14,6 +16,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:text="TextView"
+        android:layout_gravity="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/black"
         android:textStyle="italic" />
@@ -33,6 +36,7 @@
         android:id="@+id/textView_assessorName_gridItemMark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_below="@+id/divider22"
         android:layout_centerHorizontal="true"
         android:text="name"
@@ -49,20 +53,20 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="50dp"
-        android:scrollbars="vertical" >
+        android:scrollbars="vertical" />
 
         <Button
             android:id="@+id/button_viewReport_gridItemMark"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
+            android:layout_gravity="end"
             android:layout_marginLeft="20dp"
             android:layout_marginEnd="21dp"
             android:layout_marginRight="20dp"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/ripple_round_button"
             android:text=" View Report "
             android:textColor="@color/white"
             android:textSize="20sp" />
-    </ListView>
 
-</RelativeLayout>
+</LinearLayout>
