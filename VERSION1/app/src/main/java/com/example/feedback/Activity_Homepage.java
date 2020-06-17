@@ -16,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import assessment.Activity_Realtime_Assessment;
@@ -29,6 +30,7 @@ public class Activity_Homepage extends AppCompatActivity {
     private Toolbar mToolbar;
     private Handler handler;
     private String to;
+    private Button helpReferenceButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +72,17 @@ public class Activity_Homepage extends AppCompatActivity {
             }
         };
         AllFunctions.getObject().setHandler(handler);
+
+        helpReferenceButton = (Button) findViewById(R.id.button_help_reference);
+        helpReferenceButton.setOnClickListener(openHelpPage);
+
     }
+    public View.OnClickListener openHelpPage = new View.OnClickListener() {
+        public void onClick(View v) {
+            Intent intent = new Intent(Activity_Homepage.this, Activity_Help.class);
+            startActivity(intent);
+        }
+    };
 
     public void onNewIntent(Intent intent) {
         initToolbar();

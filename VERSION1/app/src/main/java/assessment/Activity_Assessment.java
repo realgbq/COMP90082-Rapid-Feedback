@@ -117,10 +117,16 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
         tv_assessment_total_mark = findViewById(R.id.tv_assessment_total_mark);
 
         ArrayList<Remark> remarkList = project.getStudentList().get(studentList.get(0)).getRemarkList();
-        for (int i = 0; i < remarkList.size(); i++) {
-            if (remarkList.get(i).getId() == AllFunctions.getObject().getId()) {
-                remark = remarkList.get(i);
-                break;
+        String markIndexStr = intent.getStringExtra("indexOfMark");
+        if(markIndexStr != null ){
+            int indexOfMark = Integer.parseInt(markIndexStr);
+            remark = remarkList.get(indexOfMark);
+        } else {
+            for (int i = 0; i < remarkList.size(); i++) {
+                if (remarkList.get(i).getId() == AllFunctions.getObject().getId()) {
+                    remark = remarkList.get(i);
+                    break;
+                }
             }
         }
 
@@ -152,7 +158,7 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
 
             double totalWeight = 0;
             for (int j = 0; j < project.getCriterionList().size(); j++) {
-                totalWeight = totalWeighting + project.getCriterionList().get(j).getMaximumMark();
+                totalWeight = totalWeight + project.getCriterionList().get(j).getMaximumMark();
             }
             totalWeighting = Double.valueOf(totalWeight).intValue();
 
@@ -165,6 +171,10 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
             } else {
                 tv_assessment_total_mark.setText(String.format("%.2f", project.getStudentList().get(studentList.get(0)).getFinalScore()) + "%");
             }
+
+            double totalMark = totalMark();
+            tv_assessment_total_mark.setText(String.format("%.2f", totalMark) + "%");
+
         } else {
             initMatrix();
 
@@ -271,20 +281,16 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
                     case 108:
                         Toast.makeText(Activity_Assessment.this,
                                 "Sync success.", Toast.LENGTH_SHORT).show();
-                        if (goBack) {
-                            if (from.equals(FROMREALTIME)) {
-                                finish();
-                            }
+                        if (goBack && from.equals(FROMREALTIME)) {
+                            finish();
                         } else {
-                            if (from.equals(Activity_Realtime_Assessment.FROMREALTIME) && !goBack) {
-                                Intent intent = new Intent(Activity_Assessment.this, Activity_Display_Mark.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                intent.putExtra("indexOfProject", String.valueOf(indexOfProject));
-                                intent.putExtra("indexOfStudent", String.valueOf(indexOfStudent));
-                                intent.putExtra("indexOfGroup", String.valueOf(indexOfGroup));
-                                intent.putExtra("from", FROMREALTIME);
-                                startActivity(intent);
-                                finish();
-                            }
+                            Intent intent = new Intent(Activity_Assessment.this, Activity_Display_Mark.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            intent.putExtra("indexOfProject", String.valueOf(indexOfProject));
+                            intent.putExtra("indexOfStudent", String.valueOf(indexOfStudent));
+                            intent.putExtra("indexOfGroup", String.valueOf(indexOfGroup));
+                            intent.putExtra("from", from);
+                            startActivity(intent);
+                            finish();
                         }
                         break;
                     case 109:
@@ -458,13 +464,13 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
                     tv_mark.setText(String.valueOf(progressDisplay) + " / " + project.getCriterionList().get(position).getMaximumMark());
 
                     for (int i = 0; i < studentList.size(); i++) {
-                        Remark newRemark = new Remark();
-                        ArrayList<Remark> remarkList = project.getStudentList().get(studentList.get(i)).getRemarkList();
-                        for (int j = 0; j < remarkList.size(); j++) {
-                            if (remarkList.get(j).getId() == AllFunctions.getObject().getId()) {
-                                newRemark = remarkList.get(j);
-                            }
-                        }
+                        Remark newRemark = remark;
+//                        ArrayList<Remark> remarkList = project.getStudentList().get(studentList.get(i)).getRemarkList();
+//                        for (int j = 0; j < remarkList.size(); j++) {
+//                            if (remarkList.get(j).getId() == AllFunctions.getObject().getId()) {
+//                                newRemark = remarkList.get(j);
+//                            }
+//                        }
 
                         int criterionId = project.getCriterionList().get(position).getId();
                         Assessment assessment = new Assessment();
@@ -517,15 +523,20 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
         for (int i = 0; i < studentList.size(); i++) {
             Double sum = 0.0;
 
-            Remark newRemark = new Remark();
-            ArrayList<Remark> remarkList = project.getStudentList().get(studentList.get(i)).getRemarkList();
-            for (int j = 0; j < remarkList.size(); j++) {
-                if (remarkList.get(j).getId() == AllFunctions.getObject().getId()) {
-                    newRemark = remarkList.get(j);
-                }
-            }
+            Remark newRemark = remark;
+//            ArrayList<Remark> remarkList = project.getStudentList().get(studentList.get(i)).getRemarkList();
+//            for (int j = 0; j < remarkList.size(); j++) {
+//                if (remarkList.get(j).getId() == AllFunctions.getObject().getId()) {
+//                    newRemark = remarkList.get(j);
+//                }
+//            }
             for (int m = 0; m < newRemark.getAssessmentList().size(); m++) {
-                sum = sum + newRemark.getAssessmentList().get(m).getScore();
+                // avoid initial problem
+                double score = newRemark.getAssessmentList().get(m).getScore();
+                if("-1.0".equals(String.valueOf(score))){
+                    score = 0d;
+                }
+                sum = sum + score;
             }
             totalMark = sum * (100.0 / totalWeighting);
         }
@@ -654,7 +665,7 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
 
     public Remark getRemark(ArrayList<Remark> remarkList) {
         for (int i = 0; i < remarkList.size(); i++) {
-            if (remarkList.get(i).getId() == AllFunctions.getObject().getId()) {
+            if (remarkList.get(i).getId() == remark.getId()) {
                 return remarkList.get(i);
             }
         }

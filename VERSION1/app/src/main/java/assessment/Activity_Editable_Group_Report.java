@@ -45,8 +45,10 @@ public class Activity_Editable_Group_Report extends AppCompatActivity {
     private String from;
     public static final String FROMREALTIMEEDIT = "realtime_edit";
     public static final String FROMREVIEWEDIT = "review_edit";
+    public static final String FROMREALTIME = "realtime";
     private Project project;
     private Remark remark;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,7 +118,7 @@ public class Activity_Editable_Group_Report extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 for (int i = 0; i < studentInfoArrayList.size(); i++) {
-                    AllFunctions.getObject().sendFinalResult(project.getId(), studentInfoArrayList.get(i).getId(), getAverageMark(remarkList), getFinalRemark(student.getRemarkList()));
+                    AllFunctions.getObject().sendFinalResult(project.getId(), studentInfoArrayList.get(i).getId(), getAverageMark(remarkList), getFinalRemark(student));
                 }
                 if (from.equals(Activity_Display_Mark.FROMREALTIME)) {
                     Intent intent = new Intent(Activity_Editable_Group_Report.this, Activity_Send_Report_Group.class);
@@ -138,7 +140,7 @@ public class Activity_Editable_Group_Report extends AppCompatActivity {
             }
         });
         if (AllFunctions.getObject().getProjectList().get(indexOfProject).getPrincipalId() != AllFunctions.getObject().getId()) {
-            button_finalReport.setVisibility(View.INVISIBLE);
+            button_finalReport.setVisibility(View.VISIBLE);
         }
 
         for (int i = 0; i < remarkList.size(); i++) {
@@ -154,7 +156,21 @@ public class Activity_Editable_Group_Report extends AppCompatActivity {
         }
 
         Button button_edit = findViewById(R.id.button_edit_groupReport);
-        button_edit.setVisibility(View.INVISIBLE);
+        button_edit.setVisibility(View.VISIBLE);
+        button_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Activity_Editable_Group_Report.this, Activity_Assessment.class);
+                intent.putExtra("indexOfProject", String.valueOf(indexOfProject));
+                intent.putExtra("indexOfStudent", String.valueOf(indexOfStudent));
+                intent.putExtra("indexOfGroup", String.valueOf(indexOfGroup));
+                intent.putExtra("indexOfMark", String.valueOf(indexOfMark));
+                intent.putExtra("from", "fromEdit");
+                startActivity(intent);
+                finish();
+            }
+        });
+
 
         TextView textView_totalMark = findViewById(R.id.textView_totalMark_report);
         textView_totalMark.setText("Mark: " + String.format("%.2f", getTotalMark(remark)) + "%");
@@ -197,7 +213,7 @@ public class Activity_Editable_Group_Report extends AppCompatActivity {
                     "<span style=\"float:right\">" + "  ---  " + remark.getAssessmentList().get(i).getScore() + "/" + getCriterionMaxMark(remark.getAssessmentList().get(i)) + "</span></h3>";
             for (int j = 0; j < remark.getAssessmentList().get(i).getSelectedCommentList().size(); j++) {
                 htmlString += "<p>" + getFieldName(remark.getAssessmentList().get(i).getSelectedCommentList().get(j)) +
-                        " : " + getExCommentName(remark.getAssessmentList().get(i).getSelectedCommentList().get(j)) + "</p >";
+                        ": " + getExCommentName(remark.getAssessmentList().get(i).getSelectedCommentList().get(j)) + "</p >";
             }
             htmlString += "<br>";
         }
@@ -293,8 +309,9 @@ public class Activity_Editable_Group_Report extends AppCompatActivity {
         return avgMark;
     }
 
-    public String getFinalRemark(ArrayList<Remark> remarkList) {
+    public String getFinalRemark(ProjectStudent student) {
         Remark remark = new Remark();
+        ArrayList<Remark> remarkList = student.getRemarkList();
         for (int i = 0; i < remarkList.size(); i++) {
             if (remarkList.get(i).getId() == project.getPrincipalId()) {
                 remark = remarkList.get(i);
@@ -302,12 +319,13 @@ public class Activity_Editable_Group_Report extends AppCompatActivity {
         }
 
         String finalRemark = "";
+        finalRemark += "Hi " + student.getFirstName() + ", this final remark indicates the final thoughts of the head marker for your assessment.\n\n";
         for (int i = 0; i < remark.getAssessmentList().size(); i++) {
-            finalRemark += "Critrion" + (i + 1) + ": " + getCriterionName(remark.getAssessmentList().get(i));
-            finalRemark += "\n";
+            finalRemark += "Criterion " + (i + 1) + ": " + getCriterionName(remark.getAssessmentList().get(i));
+            finalRemark += "\n\n";
             for (int k = 0; k < remark.getAssessmentList().get(i).getSelectedCommentList().size(); k++) {
                 finalRemark += getFieldName(remark.getAssessmentList().get(i).getSelectedCommentList().get(k)) +
-                        " : " + getExCommentName(remark.getAssessmentList().get(i).getSelectedCommentList().get(k)) + "\n";
+                        ": " + getExCommentName(remark.getAssessmentList().get(i).getSelectedCommentList().get(k)) + "\n\n";
             }
         }
         return finalRemark;

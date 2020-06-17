@@ -23,13 +23,16 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -163,6 +166,38 @@ public class Activity_Criteria extends AppCompatActivity {
         listView_criteriaDefault.setOnDragListener(dragListenerForDefaultListview);
         listView_marketCriteria.setOnDragListener(dragListenerForMarkingCriteriaList);
 
+        listView_criteriaDefault.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> list, View v, int pos, long id) {
+                listView_criteriaDefault.getItemAtPosition(pos);
+
+                v.setBackgroundColor(Color.TRANSPARENT);
+                // Gets the item containing the dragged data
+                String source_criteriaName = listView_criteriaDefault.getItemAtPosition(pos).toString();
+                Log.d("MADE IT",source_criteriaName);
+                int source_criteriaIndex = pos;
+                int whichList = findWhichCriteriaList_itbelongs(source_criteriaName);
+                switch (whichList) {
+                    case 0:
+                        Criterion criteria_Temporary = defaultCriteriaList.get(source_criteriaIndex);
+                        defaultCriteriaList.remove(source_criteriaIndex);
+                        project.getCriterionList().add(criteria_Temporary);
+                        break;
+                    case 1:
+                        criteria_Temporary = project.getCriterionList().get(source_criteriaIndex);
+                        project.getCriterionList().remove(source_criteriaIndex);
+                        defaultCriteriaList.add(criteria_Temporary);
+                        break;
+                    default:
+                        break;
+                }
+                myAdapter1.notifyDataSetChanged();
+                myAdapter2.notifyDataSetChanged();
+                // Invalidates the view to force a redraw
+                v.invalidate();
+
+            }
+        });
+
         initToolbar();
     }
 
@@ -274,10 +309,42 @@ public class Activity_Criteria extends AppCompatActivity {
                     return true;
                 }
             });
+
             return convertView;
         }
     }
 
+
+    private View.OnClickListener clickListenerForLists = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            v.setBackgroundColor(Color.TRANSPARENT);
+            // Gets the item containing the dragged data
+            ClipData.Item item1 = null;
+            ClipData.Item item2 = null;
+            String source_criteriaName = item1.getText().toString();
+            int source_criteriaIndex = Integer.parseInt(item2.getText().toString());
+            int whichList = findWhichCriteriaList_itbelongs(source_criteriaName);
+            switch (whichList) {
+                case 0:
+                    Criterion criteria_Temporary = defaultCriteriaList.get(source_criteriaIndex);
+                    defaultCriteriaList.remove(source_criteriaIndex);
+                    project.getCriterionList().add(criteria_Temporary);
+                    break;
+                case 1:
+                    criteria_Temporary = project.getCriterionList().get(source_criteriaIndex);
+                    project.getCriterionList().remove(source_criteriaIndex);
+                    defaultCriteriaList.add(criteria_Temporary);
+                    break;
+                default:
+                    break;
+            }
+            myAdapter1.notifyDataSetChanged();
+            myAdapter2.notifyDataSetChanged();
+            // Invalidates the view to force a redraw
+            v.invalidate();
+        }
+    };
 
     private View.OnDragListener dragListenerForDefaultListview = new View.OnDragListener() {
         @Override
@@ -313,9 +380,12 @@ public class Activity_Criteria extends AppCompatActivity {
                     int whichList = findWhichCriteriaList_itbelongs(source_criteriaName);
                     switch (whichList) {
                         case 0:
+                            Criterion criteria_Temporary = defaultCriteriaList.get(source_criteriaIndex);
+                            defaultCriteriaList.remove(source_criteriaIndex);
+                            project.getCriterionList().add(criteria_Temporary);
                             break;
                         case 1:
-                            Criterion criteria_Temporary = project.getCriterionList().get(source_criteriaIndex);
+                            criteria_Temporary = project.getCriterionList().get(source_criteriaIndex);
                             project.getCriterionList().remove(source_criteriaIndex);
                             defaultCriteriaList.add(criteria_Temporary);
                             break;
@@ -381,6 +451,9 @@ public class Activity_Criteria extends AppCompatActivity {
                             project.getCriterionList().add(criteria_Temporary);
                             break;
                         case 1:
+                            criteria_Temporary = project.getCriterionList().get(source_criteriaIndex);
+                            project.getCriterionList().remove(source_criteriaIndex);
+                            defaultCriteriaList.add(criteria_Temporary);
                             break;
                         default:
                             break;
